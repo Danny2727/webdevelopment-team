@@ -5,7 +5,7 @@ const fs = require('fs');
 // const Engineer = require('./lib/Engineer');
 // const Intern = require('./lib/Intern');
 const {Employee, Engineer, Manager, Intern} = require('./lib');
-const {managerQuestions, newPersonQuestion} = require('./questions')
+const {managerQuestions, newPersonQuestions, engineerQuestions, internQuestions} = require('./questions')
 
 
 
@@ -22,19 +22,42 @@ function managerInfo() {
         newMember()
     })
 }
+
+function engineerInfo() {
+    prompt(engineerQuestions)
+    .then(({engineer, engineerEml, engineerId, engineerGitHub}) =>{
+
+        const person = new Engineer(engineer, engineerEml, engineerId, engineerGitHub)
+        team.push(person)
+        newMember()
+    })
+}
+
+function internInfo() {
+    prompt(internQuestions)
+    .then(({intern, internEml, internId, internSchool}) =>{
+
+        const person = new Engineer(intern, internEml, internId, internSchool)
+        team.push(person)
+        newMember()
+    })
+}
+
 function newMember() {
-    prompt(newPersonQuestion)
+    prompt(newPersonQuestions)
     .then(({team})=>{
         if(team === 'Manager'){
             managerInfo()
         }
-        if()
-        if()
-        if()
+        if(team === 'Engineer'){
+            engineerInfo()
+        }
+        if(team === 'Intern'){
+            internInfo()
+        }
+        if(team === 'Done'){
 
-
-//switch case
-
+        }
     })
 }
 
