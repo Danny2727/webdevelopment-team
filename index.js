@@ -1,112 +1,125 @@
-const inquirer = require("inquirer");
+const {prompt} = require("inquirer");
 const fs = require('fs');
-const Employee = require('./lib/Employee');
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
-const { validate } = require("@babel/types");
+// const Employee = require('./lib/Employee');
+// const Manager = require('./lib/Manager');
+// const Engineer = require('./lib/Engineer');
+// const Intern = require('./lib/Intern');
+const {Employee, Engineer, Manager, Intern} = require('./lib');
+const {managerQuestions, newPersonQuestion} = require('./questions')
 
 
-const teamInfo = [
-    {
-        type: 'input',
-        name: 'manager',
-        message: "What is the Managers name?",
-        validate: (value) => { if (value) { return true } else { return `Please enter the Managers name` } },
-    },
-    {
-        type: 'input',
-        name: 'managerId',
-        message: "What is the Managers employee ID?",
-        validate: (value) => { if (value) { return true } else { return `Please enter the Managers employee ID` } },
-    },
-    {
-        type: 'input',
-        name: 'managerEml',
-        message: "What is the Managers email adress?",
-        validate: (value) => { if (value) { return true } else { return `Please enter the Managers email adress` } },
-    },
-    {
-        type: 'input',
-        name: 'managerOff',
-        message: "What is the Managers office number",
-        validate: (value) => { if (value) { return true } else { return `Please enter the Managers office number` } },
-    },
-    {
-        type: 'list',
-        name: 'team',
-        message: "Would you like to add a Enginner or Intern",
-        choices: ['Engineer', 'Intern'],
-        validate: (value) => { if (value) { return true } else { return `Please choose a Engineer or Intern` } },
-    }
 
-        .then(({ team }) => {
-            if (team == 'Engineer') {
-                inquirer
-                    .prompt([
-                        {
-                            type: 'input',
-                            name: 'engineer',
-                            message: "What is the Engineers name?",
-                            validate: (value) => { if (value) { return true } else { return `Please enter the Engineers name` } },
-                        },
-                        {
-                            type: 'input',
-                            name: 'engineerId',
-                            message: "What is the Engineers employee ID?",
-                            validate: (value) => { if (value) { return true } else { return `Please enter the Engineers employee ID` } },
-                        },
-                        {
-                            type: 'input',
-                            name: 'engineerEml',
-                            message: "What is the Engineers email adress?",
-                            validate: (value) => { if (value) { return true } else { return `Please enter the Engineers email adress` } },
-                        },
-                        {
-                            type: 'input',
-                            name: 'engineerGitHub',
-                            message: "What is the Engineers Github?",
-                            validate: (value) => { if (value) { return true } else { return `Please enter the Engineers Github` } },
-                        },
 
-                    ])
-            }
-        })
-        .then(({team}) => {
-            if(team == 'Intern') {
-                inquirer
-                .prompt([
-                    {
-                        type: 'input',
-                        name: 'intern',
-                        message: "What is the Interns name?",
-                        validate: (value) => { if (value) { return true } else { return `Please enter the Interns name` } },
-                    },
-                    {
-                        type: 'input',
-                        name: 'internId',
-                        message: "What is the Interns employee ID?",
-                        validate: (value) => { if (value) { return true } else { return `Please enter the Interns employee ID` } },
-                    },
-                    {
-                        type: 'input',
-                        name: 'internEml',
-                        message: "What is the Interns email adress?",
-                        validate: (value) => { if (value) { return true } else { return `Please enter the Interns email adress` } },
-                    },
-                    {
-                        type: 'input',
-                        name: 'internSchool',
-                        message: "What University does the Intern attend?",
-                        validate: (value) => { if (value) { return true } else { return `Please enter the Interns university` } },
-                    },
+const team = []
 
-                ])
-            }
-        })
 
-];
+function managerInfo() {
+    prompt(managerQuestions)
+    .then(({manager, managerEml, managerId, managerOff}) =>{
+    
+        const person = new Manager(manager, managerId, managerEml, managerOff)
+        team.push(person)
+        newMember()
+    })
+}
+function newMember() {
+    prompt(newPersonQuestion)
+    .then(({team})=>{
+        if(team === 'Manager'){
+            managerInfo()
+        }
+        if()
+        if()
+        if()
 
+
+//switch case
+
+    })
+}
+
+managerInfo()
+
+
+
+
+// function renderEngineer(Engineer) {
+//     let userEngineer = '';
+//     if (Engineer === 'Engineer') {
+//         userEngineer = `<div> 
+//         <h2>${data.engineer}</h2>
+//         <h3>Engineer</h3>
+//         <form> 
+//         <label for="enginner"> ID: </label> <input>${data.engineerId}<input><br>
+//         <label for="enginnerEML"> Email: </label> <input>${data.engineerEml}<input><br>
+//         <label for="enginnerGit"> Github: </label> <input>${data.engineerGitHub}<input>
+//         </div>`
+//     }
+//     return userEngineer;
+// }
+
+// function renderIntern(Intern) {
+//     let userIntern = '';
+//     if (Intern === 'Intern') {
+//         userEngineer = `<div> 
+//         <h2>${data.inten}</h2>
+//         <h3>Intern</h3>
+//         <form> 
+//         <label for="intern"> ID: </label> <input>"${data.intenId} "<input><br>
+//         <label for="internEML"> Email: </label> <input>"${data.intenEml} "<input><br>
+//         <label for="internSchool"> School: </label> <input>" ${data.internSchool}"<input>
+//         </div>`
+//     }
+
+//     return userIntern;
+// }
+
+// function generateHtml(data) {
+//     ` <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <link rel= "stylesheet" href="style.css">
+//     <title>WebDevTeam</title>
+// </head>
+// <body>
+//     <header> 
+//     <h1>Web Development Team</h1>
+//     </header>
+//     <div>
+//     <h2>"${data.manager} "</h2>
+//     <h3>Manager</h3>
+//     <form> 
+//     <label for="manager"> ID:</label> <input>" ${data.managerId}"<input><br>
+//     <label for="managerEml"> Email: </label> <input>"${data.managerEml} "<input><br>
+//     <label for="managerOffice"> Office number: </label> <input>"${data.managerOff}"<input>
+//     </div>
+//     </div>
+//     ${renderEngineer(data.team)}
+//     ${renderIntern(data.team)}
+// </body>
+// </html>`
+// }
+
+// function writeToFile(fileName, data) {
+//     data = generateHtml(data)
+//     fs.writeFile(fileName, data, (err) =>
+//         err ? console.log(err) : console.log('You sucessfully created your team'),);
+// }
+
+// function init() {
+//     fileName = "index.html",
+//         inquirer
+//             .prompt(teamInfo)
+//             .then((data) => {
+//                 console.log(data, 'data')
+//                 writeToFile(fileName, data)
+//             })
+// }
+
+// init()
 
 
 
