@@ -1,11 +1,8 @@
 const {prompt} = require("inquirer");
 const fs = require('fs');
-// const Employee = require('./lib/Employee');
-// const Manager = require('./lib/Manager');
-// const Engineer = require('./lib/Engineer');
-// const Intern = require('./lib/Intern');
 const {Employee, Engineer, Manager, Intern} = require('./lib');
-const {managerQuestions, newPersonQuestions, engineerQuestions, internQuestions} = require('./questions')
+const {managerQuestions, newPersonQuestions, engineerQuestions, internQuestions} = require('./questions');
+const generateHtml = require("./team");
 
 
 
@@ -56,10 +53,12 @@ function newMember() {
             internInfo()
         }
         if(team === 'Done'){
-
+            generateHtml()
         }
     })
 }
+
+
 
 managerInfo()
 
