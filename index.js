@@ -64,9 +64,8 @@ function newMember() {
 
 function writeFile () {
     var data = generateHtml(team)
-    fs.writeFile(outputPath,data,(err) => 
-    err ? console.log(err): console.log("You have succesfully created your team"),);
-    
+    fs.writeFile("team.html",data,(err) => 
+    err ? console.log(err): console.log("You have succesfully created your team"),);  
 }
 
 
