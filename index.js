@@ -3,6 +3,10 @@ const fs = require('fs');
 const {Employee, Engineer, Manager, Intern} = require('./lib');
 const {managerQuestions, newPersonQuestions, engineerQuestions, internQuestions} = require('./questions');
 const generateHtml = require("./team");
+const path = require("path");
+const OUTPUT_DIR = path.resolve(__dirname, "./dist");
+const outputPath = path.join(OUTPUT_DIR, "index.html");
+
 
 
 
@@ -34,7 +38,7 @@ function internInfo() {
     prompt(internQuestions)
     .then(({intern, internEml, internId, internSchool}) =>{
 
-        const person = new Engineer(intern, internEml, internId, internSchool)
+        const person = new Intern(intern, internEml, internId, internSchool)
         team.push(person)
         newMember()
     })
@@ -53,14 +57,14 @@ function newMember() {
             internInfo()
         }
         if(team === 'Done'){
-            generateHtml()
+           writeFile()
         }
     })
 }
 
-function writeFile (team) {
-    team = generateHtml(team)
-    fs.writeFile(data,(err) => 
+function writeFile () {
+    var data = generateHtml(team)
+    fs.writeFile(outputPath,data,(err) => 
     err ? console.log(err): console.log("You have succesfully created your team"),);
     
 }

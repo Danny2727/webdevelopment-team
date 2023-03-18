@@ -31,34 +31,34 @@ function renderTeam(team) {
 
 function generateManager(manager){
   return  `<div>
-    <h2>"${manager.manager}"</h2>
+    <h2>"${manager.name}"</h2>
     <h3>Manager</h3>
     <form>
-        <label for="manager"> ID:</label> <input>${manager.managerId}<input><br>
-        <label for="managerEml"> Email: </label> <input>"${manager.managerEml}"<input><br>
-        <label for="managerOffice"> Office number: </label> <input>${manager.managerOff}<input>
+        <label for="manager"> ID:</label> <input>${manager.id}<input><br>
+        <label for="managerEml"> Email: </label> <input>"${manager.email}"<input><br>
+        <label for="managerOffice"> Office number: </label> <input>${manager.office}<input>
 </div>
 </div>`
 }
 
 function generateEngineer(engineer){
- return  `<h2>${engineer.engineer}</h2>
+ return  `<h2>${engineer.name}</h2>
     <h3>Engineer</h3>
     <form>
-        <label for="enginner"> ID: </label> <input>${engineer.engineerId}<input><br>
-        <label for="enginnerEML"> Email: </label> <input>${engineer.engineerEml}<input><br>
-        <label for="enginnerGit"> Github: </label> <input>${engineer.engineerGitHub}<input>
+        <label for="enginner"> ID: </label> <input>${engineer.id}<input><br>
+        <label for="enginnerEML"> Email: </label> <input>${engineer.email}<input><br>
+        <label for="enginnerGit"> Github: </label> <input>${engineer.github}<input>
 </div>`
 
 }
 
 function generateIntern(intern){
-   return `<h2>${intern.intern}</h2>
+   return `<h2>${intern.name}</h2>
     <h3>Intern</h3>
     <form>
-        <label for="intern"> ID: </label> <input>${intern.internId}<input><br>
-        <label for="internEML"> Email: </label> <input>${intern.internEml}<input><br>
-        <label for="internSchool"> School: </label> <input>${intern.internSchool}<input>
+        <label for="intern"> ID: </label> <input>${intern.id}<input><br>
+        <label for="internEML"> Email: </label> <input>${intern.email}<input><br>
+        <label for="internSchool"> School: </label> <input>${intern.school}<input>
         </div>`
 }
 

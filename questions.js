@@ -92,4 +92,4 @@ const newPersonQuestions = [
     }
 ]
 
-module.exports = (managerQuestions, newPersonQuestions, engineerQuestions, internQuestions)
+module.exports = {managerQuestions, newPersonQuestions, engineerQuestions, internQuestions}
