@@ -4,8 +4,7 @@ const {Employee, Engineer, Manager, Intern} = require('./lib');
 const {managerQuestions, newPersonQuestions, engineerQuestions, internQuestions} = require('./questions');
 const generateHtml = require("./team");
 const path = require("path");
-const OUTPUT_DIR = path.resolve(__dirname, "./dist");
-const outputPath = path.join(OUTPUT_DIR, "index.html");
+const outputPath = path.join(__dirname, "/dist/index.html");
 
 
 
@@ -64,7 +63,7 @@ function newMember() {
 
 function writeFile () {
     var data = generateHtml(team)
-    fs.writeFile("team.html",data,(err) => 
+    fs.writeFile(outputPath,data,(err) => 
     err ? console.log(err): console.log("You have succesfully created your team"),);  
 }
 

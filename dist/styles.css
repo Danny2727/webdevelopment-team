@@ -1,0 +1,17 @@
+.header {
+    margin-bottom: 2rem;
+    color: white;
+    text-align: center;
+    background-color: black;
+}
+
+.card {
+ flex-wrap: wrap;
+ margin-left: 5rem;
+}
+#name{
+    text-align: center;
+}
+#employee{
+    text-align: center;
+}
