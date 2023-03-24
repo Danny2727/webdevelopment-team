@@ -32,5 +32,5 @@
 - https://github.com/Danny2727/webdevelopment-team
 
 # Website Link 
--
-- 
+-https://www.youtube.com/watch?v=Bb043uqTJ-Y (video)
+-https://danny2727.github.io/webdevelopment-team/
